@@ -17,12 +17,22 @@ public class PlayerController : MonoBehaviour
     // This is a reference to the Animator component
     public Animator anim;
 
+    // The threshold that will allow the player to clap a bit out of time and
+    // still be counted as success
     [Range(0, 1)] public float beatThreshold = 0.1f;
 
     // If the player is clapping
     private bool clap = false;
 
+    // Conductor that keeps track of the song's beats and time
     private Conductor conductor;
+
+    // Score of the player.
+    private int _score = 0;
+    public int Score { 
+        get { return _score;  }
+        set { _score = value; }
+    }
 
     private void Start()
     {
@@ -37,19 +47,19 @@ public class PlayerController : MonoBehaviour
             clap = true;
             // We get de decimals on of the beat
             float songPositionInBeatsDecimal = (float)conductor.SongPositionInBeats % 1;
-            // If the decimals fall inside the treshold, we count is as success
+            // If the decimals fall inside the treshold, we count it as success
             if (songPositionInBeatsDecimal < beatThreshold || songPositionInBeatsDecimal > 1 - beatThreshold)
             {
-                Debug.Log("EXITO");
+                UpdateScore();
             } else
             {
-                Debug.Log("FRACASO");
+                ResetScore();
             }
         }
     }
 
     // We use FixedUpdate to do all the animation work
-    void FixedUpdate()
+    private void FixedUpdate()
     {
 
         // Get the extent to which the player is currently pressing left or right
@@ -77,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void reverseImage()
+    private void reverseImage()
     {
         // Switch the value of the Boolean
         facingRight = !facingRight;
@@ -88,5 +98,17 @@ public class PlayerController : MonoBehaviour
         // Flip it around the other way
         theScale.x *= -1;
         rb.transform.localScale = theScale;
+    }
+
+    // Reset score to zero.
+    private void ResetScore()
+    {
+        Score = 0;
+    }
+
+    // Update the score adding one unit.
+    private void UpdateScore()
+    {
+        Score++;
     }
 }
