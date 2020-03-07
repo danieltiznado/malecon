@@ -17,16 +17,34 @@ public class PlayerController : MonoBehaviour
     // This is a reference to the Animator component
     public Animator anim;
 
+    [Range(0, 1)] public float beatThreshold = 0.1f;
+
     // If the player is clapping
     private bool clap = false;
+
+    private Conductor conductor;
+
+    private void Start()
+    {
+        conductor = GameObject.Find("SongManager").GetComponent<Conductor>();
+    }
 
     private void Update()
     {
         // If clap button is pressed, set clap to true
         if (Input.GetButtonDown("Clap"))
         {
-            //anim.SetTrigger("Clap");
             clap = true;
+            // We get de decimals on of the beat
+            float songPositionInBeatsDecimal = (float)conductor.SongPositionInBeats % 1;
+            // If the decimals fall inside the treshold, we count is as success
+            if (songPositionInBeatsDecimal < beatThreshold || songPositionInBeatsDecimal > 1 - beatThreshold)
+            {
+                Debug.Log("EXITO");
+            } else
+            {
+                Debug.Log("FRACASO");
+            }
         }
     }
 
