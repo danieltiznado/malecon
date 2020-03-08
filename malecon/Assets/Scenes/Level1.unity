@@ -703,7 +703,7 @@ MonoBehaviour:
   maxSpeed: 5
   rb: {fileID: 1244242900}
   anim: {fileID: 1244242897}
-  beatThreshold: 0.1
+  beatThreshold: 0.193
 --- !u!1 &2106848738
 GameObject:
   m_ObjectHideFlags: 0

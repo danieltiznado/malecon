@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     // Conductor that keeps track of the song's beats and time
     private Conductor conductor;
 
+    // The song position in beats of the last time the clap button was pressed.
+    private float lastClappedSongPositionInBeats = 1f;
+
     // Score of the player.
     private int _score = 0;
     public int Score { 
@@ -41,13 +44,18 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // If the player stopped clapping, the game is over and the score is resetted
+        if(CheckIfUserStoppedClapping(conductor.SongPositionInBeats)) {
+            ResetScore();
+        }
         // If clap button is pressed, set clap to true
         if (Input.GetButtonDown("Clap"))
         {
             clap = true;
             // We get de decimals on of the beat
+            float currentSongPositionInBeats = conductor.SongPositionInBeats;
             float songPositionInBeatsDecimal = (float)conductor.SongPositionInBeats % 1;
-            // If the decimals fall inside the treshold, we count it as success
+            // If the decimals fall inside the treshold we count it as success and the score is updated.
             if (songPositionInBeatsDecimal < beatThreshold || songPositionInBeatsDecimal > 1 - beatThreshold)
             {
                 UpdateScore();
@@ -55,6 +63,7 @@ public class PlayerController : MonoBehaviour
             {
                 ResetScore();
             }
+            lastClappedSongPositionInBeats = currentSongPositionInBeats;
         }
     }
 
@@ -110,5 +119,16 @@ public class PlayerController : MonoBehaviour
     private void UpdateScore()
     {
         Score++;
+    }
+
+    // Check if a sec per beat with threshold has passed since the player clapped to determine
+    // if the player has stopped clapping.
+    private bool CheckIfUserStoppedClapping(float currentSongPositionInBeats)
+    {
+        if(currentSongPositionInBeats - lastClappedSongPositionInBeats >= conductor.SecPerBeat + beatThreshold)
+        {
+            return true;
+        }
+        return false;
     }
 }

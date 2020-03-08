@@ -8,7 +8,12 @@ public class Conductor : MonoBehaviour
     public float songBpm;
 
     // The number of seconds for each song beat
-    private float secPerBeat;
+    private float _secPerBeat;
+    public float SecPerBeat
+    {
+        get { return _secPerBeat; }
+        private set { _secPerBeat = value; }
+    }
 
     // Current song position, in seconds
     private float songPosition;
@@ -39,7 +44,7 @@ public class Conductor : MonoBehaviour
     void Start()
     {
         //Calculate the number of seconds in each beat
-        secPerBeat = 60f / songBpm;
+        SecPerBeat = 60f / songBpm;
 
         //Record the time when the music starts
         dspSongTime = (float) AudioSettings.dspTime;
@@ -51,10 +56,10 @@ public class Conductor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Determine how many seconds since the song started
+        // Determine how many seconds have passed since the song started
         songPosition = (float) (AudioSettings.dspTime - dspSongTime - firstBeatOffset);
 
-        // Determine how many beats since the song started
-        SongPositionInBeats = songPosition / secPerBeat;
+        // Determine how many beats have passed since the song started
+        SongPositionInBeats = songPosition / SecPerBeat;
     }
 }
