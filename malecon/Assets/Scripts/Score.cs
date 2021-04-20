@@ -11,13 +11,13 @@ public class Score : MonoBehaviour
     // Text UI element in which we will display the score.
     public Text scoreText;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update.
     void Start()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
+    // Update is called once per frame.
     void Update()
     {
         scoreText.text = playerController.Score.ToString();
