@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class ScrollingBackground : MonoBehaviour
 {
+    public bool scroll;
+    public bool parallax;
+    // The width of each repeating element of this background.
     public float elementXSize;
+    public float parallaxSpeed;
 
     private Transform cameraTransform;
     private Transform[] elements;
     private float viewZone = 10;
     private int leftIndex = 0;
     private int rightIndex;
+    private float lastCameraX;
 
     // Start is called before the first frame update
     void Start()
     {
         cameraTransform = Camera.main.transform;
+        lastCameraX = cameraTransform.position.x;
         elements = new Transform[transform.childCount];
         for(int i = 0; i < transform.childCount; i++)
         {
@@ -27,7 +33,14 @@ public class ScrollingBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(cameraTransform.position.x > (elements[rightIndex].transform.position.x - viewZone))
+        if(parallax)
+        {
+            float deltaX = cameraTransform.position.x - lastCameraX;
+            transform.position += Vector3.right * (deltaX * parallaxSpeed);
+        }
+        lastCameraX = cameraTransform.position.x;
+
+        if (scroll & cameraTransform.position.x > (elements[rightIndex].transform.position.x - viewZone))
         {
             ScrollRight();
         }
