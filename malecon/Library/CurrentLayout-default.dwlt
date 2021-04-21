@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 677, y: 492}
   m_MaxSize: {x: 14001, y: 14042}
   vertical: 0
-  controlID: 59
+  controlID: 63
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -366,7 +366,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 13298
+  m_LastSelectedObjectID: -5254
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -487,7 +487,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 6efbffff
+      m_ExpandedIDs: 16e2ffff7aebffff92ebfffffef3ffff6efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -547,9 +547,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.567769, y: -0.046629056, z: -336.70953}
+    m_Target: {x: -1.1261128, y: 0.10987152, z: -401.97043}
     speed: 2
-    m_Value: {x: 3.567769, y: -0.046629056, z: -336.70953}
+    m_Value: {x: -1.1261128, y: 0.10987152, z: -401.97043}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -599,16 +599,16 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 14.374262
+    m_Target: 14.409524
     speed: 2
-    m_Value: 14.374262
+    m_Value: 14.409524
   m_Ortho:
     m_Target: 1
     speed: 2
     m_Value: 1
   m_CameraSettings:
     m_Speed: 1
-    m_SpeedNormalized: 0.5
+    m_SpeedNormalized: 0.49748743
     m_SpeedMin: 0.01
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -665,19 +665,19 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites/Environment
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Sprites/Environment
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Asus-Pc\Documents\malecon\malecon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 94340000
-    m_LastClickedID: 13460
+    m_SelectedIDs: 90340000
+    m_LastClickedID: 13456
     m_ExpandedIDs: 000000007a3400007c3400007e3400008034000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000343600001437000094f5ffff
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -784,9 +784,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: -482
-    width: 1381
-    height: 401
+    y: 645
+    width: 1382
+    height: 354
   m_ViewDataDictionary: {fileID: 0}
 --- !u!114 &19
 MonoBehaviour:
