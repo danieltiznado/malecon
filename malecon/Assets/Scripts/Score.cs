@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
+    public GameObject playerObject;
     // Player controller which contains the score of a player to display.
     private PlayerController playerController;
 
@@ -14,7 +15,7 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update.
     void Start()
     {
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        playerController = playerObject.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame.
